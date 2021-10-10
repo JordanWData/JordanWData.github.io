@@ -3,7 +3,7 @@
     
     "title": {
       "text": "Daily Covid cases",
-      "subtitle":"Sub-title here",
+      "subtitle":"New covid cases in 3 UK cities using API data source",
       "subtitleFontStyle":"italic",
       "subtitleFontSize":10,
       "anchor": "start",
