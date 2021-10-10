@@ -6,6 +6,7 @@
 <!-- ///////////////////  HEAD //////////////////////////////////// -->
 
 <head>
+  <link rel="stylesheet" href="index_.css">
 
 <!--The next three lines allow the Vega embed-->
 <script src="https://cdn.jsdelivr.net/npm/vega@5.17.0"></script>
@@ -16,15 +17,19 @@
   
 </head>
 
-<!-- ///////////////////  HEAD //////////////////////////////////// -->
-
-
+<!-///////////////////  HEAD //////////////////////////////////// -->
+<h1>Data Science</h1>
+<h3>At the University of Bristol</h3>
 
 <!-- ///////////////////  START BODY //////////////////////////////////// -->
 
 <body>
+<h3>Collection of different charts building week by week as I progress through the course</h3>
+
+
 
 <!--Chart 1 -->
+<p>Covid cases amongst UK regions</p>
   <div class="chart" id="chart1">
       <script>
         var myChart1 = "chart1_covidUKRegions.json";
@@ -33,6 +38,7 @@
   </div>
 
 <!--Chart 2 -->
+<p>UK productivity trends overtime</p>
 <div class="chart" id="chart2">
     <script>
       var myChart2 = "chart2_ukProductivity.json";
@@ -41,6 +47,7 @@
 </div>
 
   <!--Chart 3 -->
+  <p>EU covid cases</p>
   <div class="chart" id="chart3">
       <script>
         var myChart3 = "eu_covidcases.json";
@@ -49,6 +56,7 @@
   </div>
 
   <!--Chart 4 -->
+  <p>Chart tracking Covid cases in major cities, using an API to refresh data automatically</p>
   <div class="chart" id="chart4">
       <script>
         var myChart4= "newdailycovid.json";
@@ -57,6 +65,7 @@
   </div>
   
   <!--Chart 5 -->
+  <p>Chart tracking UK covid deaths, using raw data hosted on Github</p>
   <div class="chart" id="chart5">
       <script>
         var myChart5= "ukcoviddeaths.json";
