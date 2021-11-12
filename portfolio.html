@@ -1,0 +1,211 @@
+<html>
+<head>
+<!-- Title is the name of my webpage, line 5 adds the barchart logo next to my website name, line 6 links to css and line 7 to my java script-->
+    <title>JWData</title>
+<link rel="icon" type="image/png" href="logo.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="portfolio.css">
+<script src='scroll.js' defer></script>
+
+<!--The next three lines allow the Vega embed-->
+<script src="https://cdn.jsdelivr.net/npm/vega@5.17.0"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-lite@4.17.0"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-embed@6.12.2"></script>
+
+<div id="navbar">
+  <button id="logo">JWData</button>
+  <div id="navbar-right">
+    <button class="custom btn" onclick="location.href='index.html'">Home</button>
+    <button class="custom btn-active" onclick="location.href='portfolio.html'">Portfolio</button>
+    <button class="custom btn" onclick="location.href='project.html'">Project</button>
+    <button class="custom btn" onclick="location.href='https:/github.com/JordanWData/JordanWData.github.io'">GitHub</button>
+  </div>
+</div>
+
+</head>
+<body>
+
+<div class="main">
+
+  <!---------------------------Week 1 ------------------------------------>
+  <p class="header">Week 1</p> 
+  <p class="text">UK Covid Cases by Region</p>
+
+<container class="container">
+
+  <!--Chart 1 showing Covid Cases by Region -->
+    <div class="chartlong" id="chart1" tabindex="1">
+        <script>
+          var myChart1 = "charts/chart1_covidUKRegions.json";
+          vegaEmbed('#chart1', myChart1);
+        </script>
+  </div>
+  </container>
+  
+  <p class="text_left">UK productivity levels</p> 
+  <p class="text_right">EU Covid Cases</p>
+
+
+  <container class="container">
+
+    <!--Chart 2 showing UK productivity levels over time -->
+    <div class="chart" id="chart2" tabindex="2"> 
+      <script>
+        var myChart2 = "charts/chart2_ukProductivity.json";
+        vegaEmbed('#chart2', myChart2);
+      </script>
+    </div>
+    
+    <!--Chart 3 EU Covid Cases chart -->
+    <div class="chart" id="chart3" tabindex="3">
+      <script>
+        var myChart3 = "charts/eu_covidcases.json";
+        vegaEmbed('#chart3', myChart3);
+      </script>
+    </div>
+    
+</container>
+
+<!---------------------------Week 2 ------------------------------------>
+
+<p class="header">Week 2</p>
+<p class="text">Two charts in which for data one uses an API and the other uses RAW data hosted on github</p>
+
+<p class="space_provider">SPACE</p>
+
+<p class="text_left">Covid cases in major cities, using an API to refresh data automatically</p> 
+<p class="text_right">UK deaths from covid, using raw data hosted on Github</p>
+
+<container class="container">
+
+<!--Chart 4 Covid cases in major cities, using an API to refresh data automatically-->
+  <div class="chart" id="chart4" tabindex="4"> 
+    <script>
+      var myChart4 = "charts/ukcities_covid.json.json";
+      vegaEmbed('#chart4', myChart4);
+    </script>
+  </div>
+  
+  <!--Chart 5 UK Covid Deaths chart -->
+  <div class="chart" id="chart5" tabindex="5">
+    <script>
+      var myChart5 = "charts/ukcoviddeaths.json";
+      vegaEmbed('#chart5', myChart5);
+    </script>
+  </div>
+
+
+</container>
+
+<!---------------------------Week 3 ------------------------------------>
+ 
+<p class="header">Week 3</p>
+<p class="text">Two charts in which for data one I add an observation and the second uses 'in-line' data coded into JSON</p>
+
+<p class="text_left"> NEED TO COMPLETE</p> 
+<p class="text_right">UK deaths from covid, on the 10th and 25th of each month (manually coded)</p>
+
+<container class="container">
+
+<!--Chart 6 Observation added, need to completeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee-->
+<div class="chart" id="chart6" tabindex="6"> 
+  <script>
+    var myChart6 ="";
+    vegaEmbed('#chart6', myChart6);
+  </script>
+</div>
+
+<!--Chart 7 Manually coded data on UK COVID deaths on the 10th and 25th of each month -->
+<div class="chart" id="chart7" tabindex="7">
+  <script>
+    var myChart7 = "charts/ukcovidmanual.json";
+    vegaEmbed('#chart7', myChart7);
+  </script>
+</div>
+
+</container>
+
+<!---------------------------Week 4 ------------------------------------>
+
+<p class="header">Week 4</p>
+<p class="text">Two charts using API's that I have signed up to and accessed myself</p>
+
+<p class="text_left"> BTC live price using COINAPI</p> 
+<p class="text_right">Total covid cases in Germany </p>
+
+<container class="container">
+<!--Chart 8 Bitcoin price tracker -->
+<div class="chart" id="chart8" tabindex="8"> 
+  <script>
+    var myChart8 ="charts/btc_chart_api.json";
+    vegaEmbed('#chart8', myChart8);
+  </script>
+</div>
+
+<!--Chart 9 Germany Cumulative covid cases -->
+<div class="chart" id="chart9" tabindex="9">
+  <script>
+    var myChart9 = "charts/api_germanytotalcases.json";
+    vegaEmbed('#chart9', myChart9);
+  </script>
+</div>
+
+</container>
+
+<!---------------------------Week 5 ------------------------------------>
+
+<p class="header">Week 5</p>
+<p class="text">Using a python coding loop I have downloaded API data for mutliple different subsets of the API
+  and using that data to build a graph. This saves me time for my x different subsets of the API but if I needed 100 
+  different subsets the coding loop is the logical way to do it.</p>
+
+<p class="text"> Daily covid cases in mutliple countries</p>
+
+<container class="container">
+
+  <!--Chart 10-13 showing daily Covid Cases by in multiple countries -->
+    <div class="chart" id="chart10" tabindex="10">
+        <script>
+          var myChart10 = "charts/dailycovid_southafrica.json";
+          vegaEmbed('#chart10', myChart10);
+        </script>
+  </div>
+
+  <div class="chart" id="chart11" tabindex="11">
+    <script>
+      var myChart11 = "charts/dailycovid_germany.json";
+      vegaEmbed('#chart11', myChart11);
+    </script>
+</div>
+
+<div class="chart" id="chart12" tabindex="12">
+  <script>
+    var myChart12 = "charts/dailycovid_canada.json";
+    vegaEmbed('#chart12', myChart12);
+  </script>
+</div>
+
+<div class="chart" id="chart13" tabindex="13">
+  <script>
+    var myChart13 = "charts/dailycovid_china.json";
+    vegaEmbed('#chart13', myChart13);
+  </script>
+</div>
+  </container>
+
+  <container class="fullscr-container">
+
+    <!--Chart 14 showing UK daily covid cases -->
+      <div class="chartlong" id="chart14" tabindex="14">
+          <script>
+            var myChart14 = "charts/covid_ukdaily.json";
+            vegaEmbed('#chart14', myChart14);
+          </script>
+    </div>
+    </container>
+
+</div>
+
+</body>
+
+</html>
