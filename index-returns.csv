@@ -1,4 +1,4 @@
-Ticker,Name,Country,1 Month,6 Month,1 Year,5 Year
+Ticker,Index,Country,1 Month,6 Month,1 Year,5 Year
 VTI:NYSEARCA,Total Stock Market,World,1.19,9.05,25.21,110.68
 .INX:INDEXSP,S&P 500,USA,2.92,11.67,28.27,114
 UKX:INDEXFTSE,FTSE 100 ,UK,3.69,4.23,11.65,3.21
