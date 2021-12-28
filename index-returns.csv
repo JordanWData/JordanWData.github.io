@@ -1,6 +1,5 @@
 Ticker,Name,Country,1 Month,6 Month,1 Year,5 Year
 VTI:NYSEARCA,Total Stock Market,World,1.19,9.05,25.21,110.68
-.DJI:INDEXDJX,Dow Jones Industrial Average,USA (Top 30),3.32,5.89,19.40,83.69
 .INX:INDEXSP,S&P 500,USA (Top 500),2.92,11.67,28.27,114
 UKX:INDEXFTSE,FTSE 100 ,UK,3.69,4.23,11.65,3.21
 NI225:INDEXNIKKEI,Nikkei 225,Japan ,2.78,0.89,5.44,52.08
