@@ -1,0 +1,117 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "height": 300,
+    "width": "container",
+    "title": {
+      "text": "Changes in the value of VT,VTI & VXUS",
+      "subtitle": "Indexed to 22/01/2020",
+      "subtitleFontStyle": "italic",
+      "subtitleFontSize":12,
+      "anchor": "middle",
+      "color": "black",
+      "fontSize": 15,
+      "font": "Italic"
+    },
+    
+    
+    
+    
+    
+    "data": {"url": "https://raw.githubusercontent.com/JordanWData/JordanWData.github.io/main/ETF.csv"},
+  
+    "transform": [
+        
+      {"calculate": "timeParse(datum.date, '%d/%m/%Y')", "as": "Date"},
+      {"filter": "datum.index > 0"},
+      {"filter": {
+          "field": "Date",
+          "range": [
+            {"year": 2020, "month": "Jan", "date": 1},
+            {"year": 2021, "month": "Dec", "date": 30}
+          ]
+        }
+      }
+      ],
+      "encoding": {"x": 
+      {"field": "Date", 
+      "type": "temporal",
+      "axis":{
+               "title":"",
+               "grid": false}
+               }
+      
+      },
+  
+  
+    "layer": [
+      {
+        "encoding": {
+          "color": {
+            "field": "ETF",
+           "type": "nominal",
+           "title":"",
+           "legend": {
+            "orient": "bottom-right",
+            "fillColor": "#ffffff",
+            "strokeColor": "black",
+            "symbolSize":500,
+            "symbolStrokeWidth":2.5,
+            "labelFontSize":10,
+            "padding": 10
+          },
+          "scale": {"scheme":"viridis"}
+           },
+          "y": {
+            "field": "index",
+             "type": "quantitative",
+             "axis":{
+               "title":"",
+               "grid": false},
+             "scale": {"domain": [60, 150]}}
+        },
+        "layer": [
+          {"mark": "line"},
+          {
+            "transform": [
+              {"filter": 
+              {"param": "hover", "empty": false}}
+              ],
+            "mark": "line"
+          }
+        ]
+      },
+      {
+        "transform": [
+          {"pivot": "ETF","value": "index", "groupby": ["Date"]}
+          ],
+        "mark": "rule",
+        "encoding": {
+          "opacity": {
+            "condition": 
+            {"value": 0.5, 
+            "param": "hover", 
+            "empty": false},
+            "value": 0
+          },
+          "tooltip": [
+            {"field": "VTI", "type": "quantitative", "format":",.1f"},
+            {"field": "VT", "type": "quantitative","format":",.1f"},
+            {"field": "VXUS", "type": "quantitative","format":",.1f"},
+            {"field": "Date", "type": "temporal"}
+          ]
+        },
+        "params": [
+          {
+            "name": "hover",
+            "select": {
+              "type": "point",
+              "fields": ["Date"],
+              "nearest": true,
+              "on": "mouseover",
+              "clear": "mouseout"
+            }
+          }
+        ]
+      }
+    ]
+  }

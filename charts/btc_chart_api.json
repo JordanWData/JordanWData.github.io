@@ -1,0 +1,45 @@
+
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "BTC opening price daily",
+    "title": {
+      "text": "Bitcoin opening price (in £); From 2020 onwards",
+      "subtitle": "Data from CoinAPI using individual API key",
+      "subtitleFontStyle": "italic",
+      "subtitleFontSize": 12,
+      "anchor": "middle",
+      "color": "#000000",
+      "subtitleColor": "#000000"
+    },
+    "data": {
+      "url": "https://rest.coinapi.io/v1/ohlcv/BTC/GBP/history?period_id=8HRS&time_start=2020-01-01T00:00:00&limit=100000&include_empty_items=false&apikey=2BB86CAB-DDEB-42AA-90BA-732929412229"
+    },
+    "height": 300,
+    "width": "container",
+    "mark": {
+      "type": "line", "point": false, "interpolate": "linear",
+      "color": "orange"
+    },
+    "encoding": {
+      "x": {
+        "field": "time_period_start",
+        "type": "temporal",
+        "axis": {
+          "title": "",
+          "grid": false,
+          "labelSeparation": 15,
+          "ticks": false
+        }
+      },
+      "y": {
+        "field": "price_open",
+        "type": "quantitative",
+        "title": "",
+        "axis": {"grid": false}
+      },
+      "tooltip": [
+        {"field": "time_period_start", "title": "Date", "type": "temporal"},
+        {"field": "price_open", "title": "Price on Opening", "format": "$,.2d"}
+      ]
+    }
+  }

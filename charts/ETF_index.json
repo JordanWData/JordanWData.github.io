@@ -1,0 +1,100 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+      "url": "https://raw.githubusercontent.com/JordanWData/JordanWData.github.io/main/ETF.csv"
+    },
+    "height": 300,
+    "width": "container",
+    "title": {
+      "text": "Changes in the value of VT,VTI & VXUS",
+      "subtitle": "Indexed to 22/01/2020",
+      "subtitleFontStyle": "italic",
+      "subtitleFontSize":12,
+      "anchor": "middle",
+      "color": "black",
+      "fontSize": 15,
+      "font": "Italic"
+    },
+  
+    "transform": [
+        
+      {"calculate": "timeParse(datum.date, '%d/%m/%Y')", "as": "Date"},
+      {"filter": "datum.index > 0"},
+      {"filter": {
+          "field": "Date",
+          "range": [
+            {"year": 2020, "month": "Jan", "date": 1},
+            {"year": 2021, "month": "Dec", "date": 30}
+          ]
+        }
+      }
+      ],
+  
+  
+  
+    "encoding": {
+      "x": {
+        "field": "Date",
+        "type": "temporal",
+        "title": "",
+        "axis": {"grid": true, "gridColor": "lightgrey"}
+      },
+      "y": {
+        "field": "index",
+        "type": "quantitative",
+        "title": "",
+        "axis": {"grid": true, "gridColor": "lightgrey"},
+        "scale": {"domain": [60, 160]}
+      },
+      "color": {
+        "condition": {
+          "param": "hover",
+          "field": "ETF",
+          "title":"",
+          "type": "nominal",
+          "legend": {
+            "orient": "bottom-right",
+            "fillColor": "#ffffff",
+            "strokeColor": "black",
+            "padding": 10
+          },
+          "scale": {"scheme": "inferno"}
+        },
+        "value": "grey"
+      },
+      "opacity": {"condition": {"param": "hover", "value": 1}, "value": 0.2},
+      "tooltip": [
+        {"field": "ETF"},
+        {"field": "index", "title": "Index","format":",.1f"},
+        {"field": "date", "title": "Date"}
+      ]
+    },
+    "layer": [
+      {
+        "description": "transparent layer to make it easier to trigger selection",
+        "params": [
+          {
+            "name": "hover",
+            "value": [{"ETF": "VT"}],
+            "select": {"type": "point", "fields": ["ETF"], "on": "mouseover"}
+          }
+        ],
+        "mark": {"type": "line", "strokeWidth": 8, "stroke": "transparent"}
+      },
+      {"mark": "line"},
+      {
+        "encoding": {
+          "x": {"aggregate": "max", "field": "Date"},
+          "y": {"aggregate": {"argmax": "Date"}, "field": "index"}
+        },
+        "layer": [
+          {"mark": {"type": "line"}},
+          {
+            "mark": {"type": "line", "align": "left", "dx": 4},
+            "encoding": {"text": {"field": "etf", "type": "nominal"}}
+          }
+        ]
+      }
+    ],
+    "config": {"view": {"stroke": null}, "background": "#ffffff"}
+  }

@@ -1,0 +1,698 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  
+   "title": {
+    "text": "Global stock market price and COVID news",
+    "subtitle":"Using the VT ETF for global stock price",
+    "subtitleFontStyle":"italic",
+    "subtitleFontSize":10,
+    "anchor": "start"},
+  
+    "width":"container",
+    "height":300,
+  
+    "data": {
+      "name":"myData",
+      "url": "https://raw.githubusercontent.com/JordanWData/JordanWData.github.io/main/covidnews_VTI.csv"},
+  
+      "transform": [
+      {"calculate": "timeParse(datum.date, '%d/%m/%Y')", "as": "Date"},
+      {"calculate": "datum.total_deaths/1000000", "as":"Deaths (per Million)"},
+      {"filter": "datum.price > 0"},
+      
+      {"filter": {
+          "field": "Date",
+          "range": [
+            {"year": 2020, "month": "Jan", "date": 1},
+            {"year": 2020, "month": "July", "date": 30}
+          ]
+        }
+      }
+      ],
+  
+    "encoding": {     
+        "x": {
+          "field": "Date",
+          "title":null,
+          "axis": {
+              "grid": false},
+          
+          "type": "temporal"}
+          },
+        
+            
+     "layer":[
+  
+        {"mark": {
+            "type": "line",
+            "point": false,
+            "strokeWidth":3,
+            "width":1
+          },
+  
+        "encoding": {
+            "y": {
+            "field": "price",
+            "type": "quantitative",
+            "title": "VTI Stock price",
+            "axis": {
+              "grid": false,            
+              "labelColor":"black",
+              "format":"$,.5"},
+              "scale": {"domain": [50, 85]}
+              },
+              
+            "color": {
+              "datum": "Price",
+              "title":"",
+              "scale": {"range": ["black", "red"]},
+              "legend":{
+                "orient": "right"}}}
+        },
+  
+       {"mark": {
+            "type": "bar",
+            "point": false,
+            "strokeWidth":1,
+            "width":2
+          },
+  
+        "encoding": {
+            "y": {
+            "field": "aa",
+            "type": "quantitative",
+            "title": "",
+            "axis": {
+              "grid": false,
+              "labelColor":"white",
+              "format":",.5"},
+              "scale": {"domain": [0, 1]}
+              },
+              
+            "color": {
+              "datum": "Hover for the News",
+              "scale": {"range": ["black", "red"]},
+              "legend":{
+                "orient": "right"}},
+  
+                "tooltip": [
+        {"field": "date", "title": "WHO concerned over cases with no clear travel or contact links"}
+                ]
+          
+          } 
+      },
+      {"mark": {
+            "type": "bar",
+            "point": false,
+            "strokeWidth":1,
+            "width":2
+          },
+  
+        "encoding": {
+            "y": {
+            "field": "ab",
+            "type": "quantitative",
+            "title": "",
+            "axis": {
+              "grid": false,
+              "labelColor":"white",
+              "format":",.5"},
+              "scale": {"domain": [0, 1]}
+              },
+              
+            "color": {
+              "datum": "Hover for the News",
+              "scale": {"range": ["black", "red"]},
+              "legend":{
+                "orient": "right"}},
+  
+                "tooltip": [
+        {"field": "date", "title": "US officials warn its spread is inevitable "}
+                ]
+          
+          } 
+      },
+      {"mark": {
+            "type": "bar",
+            "point": false,
+            "strokeWidth":1,
+            "width":2
+          },
+  
+        "encoding": {
+            "y": {
+            "field": "ad",
+            "type": "quantitative",
+            "title": "",
+            "axis": {
+              "grid": false,
+              "labelColor":"white",
+              "format":",.5"},
+              "scale": {"domain": [0, 1]}
+              },
+              
+            "color": {
+              "datum": "Hover for the News",
+              "scale": {"range": ["black", "red"]},
+              "legend":{
+                "orient": "right"}},
+  
+                "tooltip": [
+        {"field": "date", "title": "Total cases over 100,000"}
+                ]
+          
+          } 
+      },
+      {"mark": {
+            "type": "bar",
+            "point": false,
+            "strokeWidth":1,
+            "width":2
+          },
+  
+        "encoding": {
+            "y": {
+            "field": "ae",
+            "type": "quantitative",
+            "title": "",
+            "axis": {
+              "grid": false,
+              "labelColor":"white",
+              "format":",.5"},
+              "scale": {"domain": [0, 1]}
+              },
+              
+            "color": {
+              "datum": "Hover for the News",
+              "scale": {"range": ["black", "red"]},
+              "legend":{
+                "orient": "right"}},
+  
+                "tooltip": [
+        {"field": "date", "title": "Declared a Pandemic by WHO"}
+                ]
+          
+          } 
+      },
+      {"mark": {
+            "type": "bar",
+            "point": false,
+            "strokeWidth":1,
+            "width":2
+          },
+  
+        "encoding": {
+            "y": {
+            "field": "af",
+            "type": "quantitative",
+            "title": "",
+            "axis": {
+              "grid": false,
+              "labelColor":"white",
+              "format":",.5"},
+              "scale": {"domain": [0, 1]}
+              },
+              
+            "color": {
+              "datum": "Hover for the News",
+              "scale": {"range": ["black", "red"]},
+              "legend":{
+                "orient": "right"}},
+  
+                "tooltip": [
+        {"field": "date", "title": "It took 3 months to reach 100,000 cases, 12 days to gain another 100,000 cases and 3 days to gain it's latest set of 100,000 "}
+                ]
+          
+          } 
+      },
+      {"mark": {
+            "type": "bar",
+            "point": false,
+            "strokeWidth":1,
+            "width":2
+          },
+  
+        "encoding": {
+            "y": {
+            "field": "ag",
+            "type": "quantitative",
+            "title": "",
+            "axis": {
+              "grid": false,
+              "labelColor":"white",
+              "format":",.5"},
+              "scale": {"domain": [0, 1]}
+              },
+              
+            "color": {
+              "datum": "Hover for the News",
+              "scale": {"range": ["black", "red"]},
+              "legend":{
+                "orient": "right"}},
+  
+                "tooltip": [
+        {"field": "date", "title": "Global deaths pass 300,000. But Johnson & Johnson announce lead vaccine"}
+                ]
+          
+          } 
+      },
+      {"mark": {
+            "type": "bar",
+            "point": false,
+            "strokeWidth":1,
+            "width":2
+          },
+  
+        "encoding": {
+            "y": {
+            "field": "ah",
+            "type": "quantitative",
+            "title": "",
+            "axis": {
+              "grid": false,
+              "labelColor":"white",
+              "format":",.5"},
+              "scale": {"domain": [0, 1]}
+              },
+              
+            "color": {
+              "datum": "Hover for the News",
+              "scale": {"range": ["black", "red"]},
+              "legend":{
+                "orient": "right"}},
+  
+                "tooltip": [
+        {"field": "date", "title": "Estimated global economic impact of $2-4 trillion if contained within next 6 months"}
+                ]
+          
+          } 
+      },
+      {"mark": {
+            "type": "bar",
+            "point": false,
+            "strokeWidth":1,
+            "width":2
+          },
+  
+        "encoding": {
+            "y": {
+            "field": "ai",
+            "type": "quantitative",
+            "title": "",
+            "axis": {
+              "grid": false,
+              "labelColor":"white",
+              "format":",.5"},
+              "scale": {"domain": [0, 1]}
+              },
+              
+            "color": {
+              "datum": "Hover for the News",
+              "scale": {"range": ["black", "red"]},
+              "legend":{
+                "orient": "right"}},
+  
+                "tooltip": [
+        {"field": "date", "title": "Global deaths pass 100,000"}
+                ]
+          
+          } 
+      },
+      {"mark": {
+            "type": "bar",
+            "point": false,
+            "strokeWidth":1,
+            "width":2
+          },
+  
+        "encoding": {
+            "y": {
+            "field": "aj",
+            "type": "quantitative",
+            "title": "",
+            "axis": {
+              "grid": false,
+              "labelColor":"white",
+              "format":",.5"},
+              "scale": {"domain": [0, 1]}
+              },
+              
+            "color": {
+              "datum": "Hover for the News",
+              "scale": {"range": ["black", "red"]},
+              "legend":{
+                "orient": "right"}},
+  
+                "tooltip": [
+        {"field": "date", "title": "90% of US population in some form of lockdown"}
+                ]
+          
+          } 
+      },
+      {"mark": {
+            "type": "bar",
+            "point": false,
+            "strokeWidth":1,
+            "width":2
+          },
+  
+        "encoding": {
+            "y": {
+            "field": "ak",
+            "type": "quantitative",
+            "title": "",
+            "axis": {
+              "grid": false,
+              "labelColor":"white",
+              "format":",.5"},
+              "scale": {"domain": [0, 1]}
+              },
+              
+            "color": {
+              "datum": "Hover for the News",
+              "scale": {"range": ["black", "red"]},
+              "legend":{
+                "orient": "right"}},
+  
+                "tooltip": [
+        {"field": "date", "title": "Western European outbreaks stable or declining"}
+                ]
+          
+          } 
+      },
+      {"mark": {
+            "type": "bar",
+            "point": false,
+            "strokeWidth":1,
+            "width":2
+          },
+  
+        "encoding": {
+            "y": {
+            "field": "al",
+            "type": "quantitative",
+            "title": "",
+            "axis": {
+              "grid": false,
+              "labelColor":"white",
+              "format":",.5"},
+              "scale": {"domain": [0, 1]}
+              },
+              
+            "color": {
+              "datum": "Hover for the News",
+              "scale": {"range": ["black", "red"]},
+              "legend":{
+                "orient": "right"}},
+  
+                "tooltip": [
+        {"field": "date", "title": "WHO declares public health emergency"}
+                ]
+          
+          } 
+      },
+      {"mark": {
+            "type": "bar",
+            "point": false,
+            "strokeWidth":1,
+            "width":2
+          },
+  
+        "encoding": {
+            "y": {
+            "field": "am",
+            "type": "quantitative",
+            "title": "",
+            "axis": {
+              "grid": false,
+              "labelColor":"white",
+              "format":",.5"},
+              "scale": {"domain": [0, 1]}
+              },
+              
+            "color": {
+              "datum": "Hover for the News",
+              "scale": {"range": ["black", "red"]},
+              "legend":{
+                "orient": "right"}},
+  
+                "tooltip": [
+        {"field": "date", "title": "US cases above 1 million and deaths above 58,000"}
+                ]
+          
+          } 
+      },
+      {"mark": {
+            "type": "bar",
+            "point": false,
+            "strokeWidth":1,
+            "width":2
+          },
+  
+        "encoding": {
+            "y": {
+            "field": "an",
+            "type": "quantitative",
+            "title": "",
+            "axis": {
+              "grid": false,
+              "labelColor":"white",
+              "format":",.5"},
+              "scale": {"domain": [0, 1]}
+              },
+              
+            "color": {
+              "datum": "Hover for the News",
+              "scale": {"range": ["black", "red"]},
+              "legend":{
+                "orient": "right"}},
+  
+                "tooltip": [
+        {"field": "date", "title": "Half of the world in some form of lockdown"}
+                ]
+          
+          } 
+      },
+      {"mark": {
+            "type": "bar",
+            "point": false,
+            "strokeWidth":1,
+            "width":2
+          },
+  
+        "encoding": {
+            "y": {
+            "field": "ao",
+            "type": "quantitative",
+            "title": "",
+            "axis": {
+              "grid": false,
+              "labelColor":"white",
+              "format":",.5"},
+              "scale": {"domain": [0, 1]}
+              },
+              
+            "color": {
+              "datum": "Hover for the News",
+              "scale": {"range": ["black", "red"]},
+              "legend":{
+                "orient": "right"}},
+  
+                "tooltip": [
+        {"field": "date", "title": "Cluster of cases appearing in Wuhan"}
+                ]
+          
+          } 
+      },
+      {"mark": {
+            "type": "bar",
+            "point": false,
+            "strokeWidth":1,
+            "width":2
+          },
+  
+        "encoding": {
+            "y": {
+            "field": "ap",
+            "type": "quantitative",
+            "title": "",
+            "axis": {
+              "grid": false,
+              "labelColor":"white",
+              "format":",.5"},
+              "scale": {"domain": [0, 1]}
+              },
+              
+            "color": {
+              "datum": "Hover for the News",
+              "scale": {"range": ["black", "red"]},
+              "legend":{
+                "orient": "right"}},
+  
+                "tooltip": [
+        {"field": "date", "title": "Estimated global financial impact increased by $3.3 billion "}
+                ]
+          
+          } 
+      },
+      {"mark": {
+            "type": "bar",
+            "point": false,
+            "strokeWidth":1,
+            "width":2
+          },
+  
+        "encoding": {
+            "y": {
+            "field": "aq",
+            "type": "quantitative",
+            "title": "",
+            "axis": {
+              "grid": false,
+              "labelColor":"white",
+              "format":",.5"},
+              "scale": {"domain": [0, 1]}
+              },
+              
+            "color": {
+              "datum": "Hover for the News",
+              "scale": {"range": ["black", "red"]},
+              "legend":{
+                "orient": "right"}},
+  
+                "tooltip": [
+        {"field": "date", "title": "US finds first indication of potential effective vaccine "}
+                ]
+          
+          } 
+      },
+      {"mark": {
+            "type": "bar",
+            "point": false,
+            "strokeWidth":1,
+            "width":2
+          },
+  
+        "encoding": {
+            "y": {
+            "field": "ar",
+            "type": "quantitative",
+            "title": "",
+            "axis": {
+              "grid": false,
+              "labelColor":"white",
+              "format":",.5"},
+              "scale": {"domain": [0, 1]}
+              },
+              
+            "color": {
+              "datum": "Hover for the News",
+              "scale": {"range": ["black", "red"]},
+              "legend":{
+                "orient": "right"}},
+  
+                "tooltip": [
+        {"field": "date", "title": "Potential Chinese covid vaccine by the end of the year"}
+                ]
+          
+          } 
+      },
+      {"mark": {
+            "type": "bar",
+            "point": false,
+            "strokeWidth":1,
+            "width":2
+          },
+  
+        "encoding": {
+            "y": {
+            "field": "as",
+            "type": "quantitative",
+            "title": "",
+            "axis": {
+              "grid": false,
+              "labelColor":"white",
+              "format":",.5"},
+              "scale": {"domain": [0, 1]}
+              },
+              
+            "color": {
+              "datum": "Hover for the News",
+              "scale": {"range": ["black", "red"]},
+              "legend":{
+                "orient": "right"}},
+  
+                "tooltip": [
+        {"field": "date", "title": "WHO advises wearing masks at all times to slow the spread"}
+                ]
+          
+          } 
+      },
+      {"mark": {
+            "type": "bar",
+            "point": false,
+            "strokeWidth":1,
+            "width":2
+          },
+  
+        "encoding": {
+            "y": {
+            "field": "at",
+            "type": "quantitative",
+            "title": "",
+            "axis": {
+              "grid": false,
+              "labelColor":"white",
+              "format":",.5"},
+              "scale": {"domain": [0, 1]}
+              },
+              
+            "color": {
+              "datum": "Hover for the News",
+              "scale": {"range": ["black", "red"]},
+              "legend":{
+                "orient": "right"}},
+  
+                "tooltip": [
+        {"field": "date", "title": "US passes 2 million cases"}
+                ]
+          
+          } 
+      },
+      {"mark": {
+            "type": "bar",
+            "point": false,
+            "strokeWidth":1,
+            "width":2
+          },
+  
+        "encoding": {
+            "y": {
+            "field": "au",
+            "type": "quantitative",
+            "title": "",
+            "axis": {
+              "grid": false,
+              "labelColor":"white",
+              "format":",.5"},
+              "scale": {"domain": [0, 1]}
+              },
+              
+            "color": {
+              "datum": "Hover for the News",
+              "scale": {"range": ["black", "red"]},
+              "legend":{
+                "orient": "right"}},
+  
+                "tooltip": [
+        {"field": "date", "title": "Moderna human trial success"}
+                ]
+          
+          } 
+      }
+      
+  ],
+  
+      "resolve": {"scale": {"y": "independent"}} 
+  }
+  

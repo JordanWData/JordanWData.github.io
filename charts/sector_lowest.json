@@ -1,0 +1,61 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": {
+      "text": "% Dropped from 22/01/20 at their lowest point",
+      "subtitle": "",
+      "subtitleFontStyle": "italic",
+      "subtitleFontSize": 10,
+      "anchor": "middle"
+    },
+    "width": "container",
+    "height": 300,
+    "data": {
+      "name": "myData",
+      "url": "https://raw.githubusercontent.com/JordanWData/JordanWData.github.io/main/sector_low%2Bend.csv"
+    },
+    "transform": [],
+    "encoding": {
+      "y": {
+        "field": "Year",
+        "sort":"",
+        "title": "",
+        "type": "nominal",
+        "axis": {
+          "domain": false,
+          "ticks": false,
+          "labelAngle": 0,
+          "labelPadding": 4
+        }
+      },
+      "color": {
+        "condition": {"test": "datum.Change > 0"},
+        "value": "teal"
+      },
+      "x": {
+        "field": "lowest",
+        "title": "",
+        "type": "quantitative",
+        "scale": {"padding": 20},
+        "axis": {
+          "gridColor": {
+            "condition": {"test": "datum.value === 0", "value": "black"},
+            "value": "#ffffff"
+          }
+        }
+      }
+    },
+    "layer": [
+      {"mark": "bar"},
+      {
+        "mark": {
+          "type": "text",
+          "align": {"expr": "datum.lowest < 0 ? 'right' : 'left'"},
+          "dx": {"expr": "datum.lowest < 0 ? -2 : 2"},
+          "color": "black"
+        },
+        "encoding": {
+          "text": {"field": "lowest", "type": "quantitative", "format": ",.2f"}
+        }
+      }
+    ]
+  }

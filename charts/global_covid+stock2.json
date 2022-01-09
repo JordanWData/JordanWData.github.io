@@ -1,0 +1,287 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  
+  
+   "title": {
+    "text": "January 2020 - December 2021",
+    "subtitle":"",
+    "subtitleFontStyle":"italic",
+    "subtitleFontSize":12,
+    "anchor": "middle"},
+  
+    "width":"container",
+    "height":300,
+  
+  
+    "data": {
+      "name":"myData",
+      "url": "https://raw.githubusercontent.com/JordanWData/JordanWData.github.io/main/markets_covid_global.csv"},
+  
+      "transform": [
+      {"calculate": "timeParse(datum.date, '%d/%m/%Y') ", "as": "Date"},
+      {"calculate": "((datum.VT/79.519882)*100)-100", "as":"index_price", "format":",.2f"},
+      {"filter": "datum.VT > 60"},
+      {"filter": {
+          "field": "Date",
+          "range": [
+            {"year": 2019, "month": "Jan", "date": 1},
+            {"year": 2030, "month": "Jun", "date": 22}
+          ]
+        }
+      }
+      ],
+  
+    
+    "hconcat": [
+      {
+        "layer": [
+          {
+            "title": {
+    "text": " ",
+    "subtitle":"New Cases",
+    "subtitleFontStyle":"x",
+    "subtitleFontSize":12,
+    "anchor": "middle"},
+  
+            "mark": {"type": "line", "color": "purple"},
+            "encoding": {
+              "x": {"type": "temporal", "field": "Date","axis": {
+              "grid": false}},
+              "y": {
+                "type": "quantitative",
+                "aggregate": "",
+                "field": "index_price",
+                "title":"Price change from index(%) ",
+                "scale": {"domain": [-30,40],
+                "format":"%"
+                }
+              },
+              "tooltip": [
+        {"field": "index_price", "title": "% Change in VT from 22/01","format":",.2f"},
+        {"nearest": true},
+        {"field": "Date", "type": "temporal", "title": "Date"},
+        {
+          "field": "total_cases",
+          "type": "nominal",
+          "title": "Number of new cases on given date"
+        }]
+            }
+          },
+          {
+            "mark": {"type": "line", "color": "blue"},
+            "encoding": {
+              "x": {
+                "type": "temporal",
+               "field": "Date",
+               "title":""
+               },
+              "y": {
+                "type": "quantitative",
+                "aggregate": "",
+                "field": "new_cases_smoothed",
+                "title":"New Cases reported"
+              },
+              "tooltip": [
+        {"field": "index_price", "title": "% Change in VT from 22/01","format":",.2f"},
+        {"nearest": true},
+        {"field": "Date", "type": "temporal", "title": "Date"},
+        {
+          "field": "total_cases",
+          "type": "nominal",
+          "title": "Number of new cases on given date"
+        }]
+            }
+          }
+        ],
+        "resolve": {"scale": {"y": "independent", "x": "shared"}}
+      },
+      {
+        "layer": [
+          {
+            "title": {
+    "text": " ",
+    "subtitle":"Total Cases",
+    "subtitleFontStyle":"x",
+    "subtitleFontSize":12,
+    "anchor": "middle"},
+  
+            "mark": {"type": "line", "color": "purple"},
+            "encoding": {
+              "x": {"type": "temporal", "field": "Date"},
+              "y": {
+                "type": "quantitative",
+                "aggregate": "",
+                "field": "index_price",
+                "title":"",
+                "scale": {"domain": [-30,40],
+                "format":"%"}
+              },
+              "tooltip": [
+        {"field": "index_price", "title": "% Change in VT from 22/01","format":",.2f"},
+        {"nearest": true},
+        {"field": "Date", "type": "temporal", "title": "Date"},
+        {
+          "field": "total_cases",
+          "type": "nominal",
+          "title": "Total number of cases"
+        }]
+            }
+            
+          },
+          {
+            "mark": {"type": "line", "color": "steelblue"},
+            "encoding": {
+              "x": {
+                "type": "temporal", 
+              "field": "Date",
+              "title":"",
+              "axis": {
+              "grid": false}
+              },
+              "y": {
+                "type": "quantitative",
+                "aggregate": "",
+                "field": "total_cases",
+                "title":"Total Cases reported"
+              },
+              "tooltip": [
+        {"field": "index_price", "title": "% Change in VT from 22/01","format":",.2f"},
+        {"nearest": true},
+        {"field": "Date", "type": "temporal", "title": "Date"},
+        {
+          "field": "total_cases",
+          "type": "nominal",
+          "title": "Total number of cases"
+        }]
+            }
+          }
+        ],
+        "resolve": {"scale": {"y": "independent", "x": "shared"}}
+      },
+      {
+        "layer": [
+          {
+            "title": {
+    "text": " ",
+    "subtitle":"New Deaths",
+    "subtitleFontStyle":"x",
+    "subtitleFontSize":12,
+    "anchor": "middle"},
+            "mark": {"type": "line", "color": "purple"},
+            "encoding": {
+              "x": {"type": "temporal", "field": "Date"},
+              "y": {
+                "type": "quantitative",
+                "aggregate": "",
+                "field": "index_price",
+                "title":"Price change from index(%) ",
+                "scale": {"domain": [-30,40],
+                "format":"%"}
+              },
+              "tooltip": [
+        {"field": "index_price", "title": "% Change in VT from 22/01","format":",.2f"},
+        {"nearest": true},
+        {"field": "Date", "type": "temporal", "title": "Date"},
+        {
+          "field": "new_deaths_smoothed",
+          "type": "nominal",
+          "title": "Number of deaths on given date"
+        }]
+            }
+          },
+          {
+            "mark": {"type": "line", "color": "red"},
+            "encoding": {
+              "x": {
+                "type": "temporal", 
+              "field": "Date",
+              "title":"",
+              "axis": {
+              "grid": false}
+              },
+              "y": {
+                "type": "quantitative",
+                "aggregate": "",
+                "field": "new_deaths_smoothed",
+                "title":"Daily Number of Deaths"
+              },
+              "tooltip": [
+        {"field": "index_price", "title": "% Change in VT from 22/01","format":",.2f"},
+        {"nearest": true},
+        {"field": "Date", "type": "temporal", "title": "Date"},
+        {
+          "field": "new_deaths_smoothed",
+          "type": "nominal",
+          "title": "Number of deaths on given date"
+        }]
+            }
+          }
+        ],
+        "resolve": {"scale": {"y": "independent", "x": "shared"}}
+      },
+      {
+        "layer": [
+          {
+            "title": {
+    "text": " ",
+    "subtitle":"Total Deaths",
+    "subtitleFontStyle":"x",
+    "subtitleFontSize":12,
+    "anchor": "middle"},
+  
+            "mark": {"type": "line","color":"purple"},
+            "encoding": {
+              "x": {"type": "temporal", "field": "Date"},
+              "y": {
+                "type": "quantitative",
+                "aggregate": "",
+                "field": "index_price",
+                "title":"Price change from index(%) ",
+                "scale": {"domain": [-30,40],
+                "format":",.2f"}
+              },
+              "tooltip": [
+        {"field": "index_price", "title": "% Change in VT from 22/01","format":",.2f"},
+        {"nearest": true},
+        {"field": "Date", "type": "temporal", "title": "Date"},
+        {
+          "field": "total_deaths",
+          "type": "nominal",
+          "title": "Total number of deaths"
+        }]
+            }
+          },
+          {
+            "mark": {"type": "line", "color": "darkred"},
+            "encoding": {
+              "x": {
+                "type": "temporal", 
+              "field": "Date",
+              "title":"",
+              "axis": {
+              "grid": false}
+              },
+              "y": {
+                "type": "quantitative",
+                "aggregate": "",
+                "field": "total_deaths",
+                "title":"Total Deaths reported",
+                "format":",.2f"
+              },
+  
+              "tooltip": [
+        {"field": "index_price", "title": "% Change in VT from 22/01","format":",.2f"},
+        {"nearest": true},
+        {"field": "Date", "type": "temporal", "title": "Date"},
+        {
+          "field": "total_deaths",
+          "type": "nominal",
+          "title": "Total number of deaths"
+        }]
+            }
+          }
+        ],
+        "resolve": {"scale": {"y": "independent", "x": "shared"}}
+      }
+    ]
+  }

@@ -1,0 +1,62 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+      "url": "https://raw.githubusercontent.com/JordanWData/JordanWData.github.io/main/worldcovid_afterinital.csv",
+      "format": {"type": "csv"}
+    },
+    "title": {
+      "text": "Regressing the world stock market on covid cases ",
+      "subtitle": "Starting the regression after the VTI reached its lowest point (03/April/20)",
+      "subtitleFontStyle": "italic",
+      "subtitleFontSize": 10,
+      "anchor": "start",
+      "color": "black"
+    },
+    "width": "container",
+    "height": 300,
+    "mark": {
+      "type": "line",
+      "color": "orangered",
+      "strokeWidth": 2,
+      "opacity": 1
+    },
+    "transform": [
+  
+    {"calculate": "datum.cases/1000000", "as": "cases2"},
+    {"calculate": "datum.price", "as": "VTI"}
+    ],
+  
+    "layer": [
+      {
+        "mark": {"type": "point", "filled": true,"color": "brown"},
+        "encoding": {
+          "x": {"field": "cases2", "type": "quantitative", "scale": {"domain": [0,290]}, "title": "Cases (in millions)"},
+          "y": {"field": "VTI", "type": "quantitative", "scale": {"domain": [110,250]}, "title": "Closing stock price"}
+        }
+      },
+      {
+        "mark": {"type": "errorband", "color": "firebrick"},
+        "transform": [{"regression": "cases", "on": "price"}],
+        "encoding": {
+          "x": {"field": "cases2", "type": "quantitative"},
+          "y": {"field": "VTI", "type": "quantitative"}
+        }
+      },
+      {
+        "transform": [
+          {"regression": "cases2", "on": "price", "params": true},
+          {"calculate": "'R²: '+format(datum.rSquared, '.2f')", "as": "R2"}
+          
+          
+        ],
+        "mark": {
+          "type": "text",
+          "color": "darkred",
+          "x": "width",
+          "align": "right"
+          
+        },
+        "encoding": {"text": {"type": "nominal", "field": "R2"}}
+      }
+    ]
+  }

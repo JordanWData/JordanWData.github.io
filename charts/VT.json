@@ -1,0 +1,74 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  
+  
+   "title": {
+    "text": "'Price' of the Global stock market",
+    "subtitle":"Using the price of the ETF VT as the global market ",
+    "subtitleFontStyle":"italic",
+    "subtitleFontSize":10,
+    "anchor": "middle"},
+  
+    "width":"container",
+    "height":300,
+  
+  
+    "data": {
+      "name":"myData",
+      "url": "https://raw.githubusercontent.com/JordanWData/JordanWData.github.io/main/markets_covid_global.csv"},
+  
+      "transform": [
+        {"calculate": "datum.VT","as":"Price"},
+        {"filter": "datum.Price > 60"},
+  
+      {"calculate": "timeParse(datum.date, '%d/%m/%Y') ", "as": "Date"},
+      {"filter": {
+          "field": "Date",
+          "range": [
+            {"year": 2019, "month": "Jan", "date": 1},
+            {"year": 2021, "month": "Dec", "date": 30}
+          ]
+        }
+      }
+      ],
+  
+  
+    "encoding": {     
+        "x": {
+          "field": "Date",
+          "title":null,
+          "type": "temporal",
+          "axis": {
+              "grid": false}
+        }
+          },
+        
+            
+     "layer":[
+  
+        {"mark": {
+            "type": "line",
+            "point": false,
+            "strokeWidth":3,
+            "width":1,
+            "color":"chocolate"
+          },
+  
+        "encoding": {
+            "y": {
+            "field": "Price",
+            "type": "quantitative",
+            "title": "VT Stock price",
+            "scale": {"domain": [50,110]},
+            "axis": {
+              "grid": false,            
+              "labelColor":"black",
+              "format":"$,.5"}
+              }
+        }
+        }
+  
+  ]
+  
+  }
+  

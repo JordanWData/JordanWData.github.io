@@ -1,0 +1,43 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": {
+      "text": "Covid deaths in United Kingdom",
+      "subtitle": "UK daily deaths with added CSV values in late October simulating a sharp increase in deaths",
+      "subtitleFontStyle": "italic",
+      "subtitleFontSize": 10,
+      "anchor": "start",
+      "color": "black"
+    },
+    "data": {
+      "url": "https://raw.githubusercontent.com/JordanWData/JordanWData.github.io/main/ukcoviddeaths%2Badded.csv",
+      "format": {"type": "csv"}
+    },
+    "transform": [],
+    "height": 300,
+    "width": "container",
+    "mark": {"type": "line", "point": false},
+    "encoding": {
+      "x": {
+        "field": "date",
+        "type": "temporal",
+        "title": null,
+        "axis": {"grid": false}
+      },
+      "y": {
+        "field": "newDeaths28DaysByDeathDate",
+        "type": "quantitative",
+        "title": null,
+        "axis": {"grid": false}
+      },
+      "color": {
+        "field": "areaName",
+        "type": "nominal",
+        "legend": null,
+        "scale": {"scheme": "reds"}
+      },
+      "tooltip": [
+        {"field": "date", "title": "Date", "type": "temporal"},
+        {"field": "newDeaths28DaysByDeathDate", "title": "Deaths"}
+      ]
+    }
+  }

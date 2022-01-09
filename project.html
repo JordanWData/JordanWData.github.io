@@ -1,0 +1,215 @@
+<html>
+<head>
+<!-- Title is the name of my webpage, line 5 adds the barchart logo next to my website name, line 6 links to css and line 7 to my java script-->
+    <title>JWData</title>
+<link rel="icon" type="image/png" href="logo.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="portfolio.css">
+<script src='scroll.js' defer></script>
+
+<!--The next three lines allow the Vega embed-->
+<script src="https://cdn.jsdelivr.net/npm/vega@5.21.0"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-lite@5.2.0"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-embed@6.12.2"></script>
+
+<div id="navbar">
+  <button id="logo">JWData</button>
+  <div id="navbar-right">
+    <button class="custom btn" onclick="location.href='index.html'">Home</button>
+    <button class="custom btn" onclick="location.href='portfolio.html'">Portfolio</button>
+    <button class="custom btn-active" onclick="location.href='project.html'">Project</button>
+    <button class="custom btn" onclick="location.href='https:/github.com/JordanWData/JordanWData.github.io'">GitHub</button>
+  </div>
+</div>
+
+</head>
+<body>
+
+<div class="main">
+
+  <!--------------------------- ------------------------------------>
+  <p class="header2">What effect did the COVID-19 pandemic have on global stock markets</p> 
+  <p class="text">
+    Looking into how the global stock market changed as the COVID pandemic progressed, how the daily statistics impacted the market, is this another typical boom and bust cycle in the market, did all the major sectors experience the same changes and is COVID old news to the stock market
+  </p>
+  <p class="space_provider">.</p>
+
+  <p class="text">I make reference to VT being global stock market, this is because it’s a fund specifically meant to track movements in global stocks with its 9256 holdings. VTI tracks the US stock market and VXUS is the VT excluding US companies.</p>
+
+  <p class="space_provider">.</p>
+
+
+  <p class="header">How did the global stock market perform during the Covid-19 pandemic </p>
+
+
+  <container class="container">
+
+    <div class="chart" id="chart98" tabindex="98">
+      <script>
+        var myChart98 = "charts/VT.json";
+        vegaEmbed('#chart98', myChart98);
+      </script>
+</div>
+
+<div class="chart" id="chart99" tabindex="99">
+  <script>
+    var myChart99 = "charts/VT_change.json";
+    vegaEmbed('#chart99', myChart99);
+  </script>
+</div>
+
+
+
+  </container>
+
+  <container class="container">
+
+    <!---->
+      <div class="chartlong" id="chart97" tabindex="97">
+          <script>
+            var myChart97 = "charts/VT_news.json";
+            vegaEmbed('#chart97', myChart97);
+          </script>
+    </div>
+
+  </container>
+
+  <p class="text">The global stock market very quickly recovered from its market crash and has made such positive strong wind that its had two years of beyond average growth despite covid. It’s clear that the stock market very quickly moved pass covid news impacting it.</p>
+
+  <p class="space_provider">.</p>
+
+  <p class="header">What effect did global COVID-19 statistics have on the stock market </p>
+
+
+<container class="container">
+
+  <!---->
+    <div class="chartlong" id="chart100" tabindex="100">
+        <script>
+          var myChart100 = "charts/global_covid+stock12.json";
+          vegaEmbed('#chart100', myChart100);
+        </script>
+  </div>
+
+  <!---->
+  <div class="chartlong" id="chart101" tabindex="101">
+    <script>
+      var myChart101 = "charts/global_covid+stock22.json";
+      vegaEmbed('#chart101', myChart101);
+    </script>
+</div>
+  </container>
+
+  <p class="text">As expected from the previous charts, the stock market barely reacted to growing numbers of cases or deaths, not during the initial crash or at any point over the last 2 years.
+  </p>
+    <p class="space_provider">.</p>
+  
+  <p class="header">How did the US perform relative to the rest of the world</p> 
+
+  <container class="container">
+
+    <!---->
+      <div class="chartlong" id="chart102" tabindex="102">
+          <script>
+            var myChart102 = "charts/ETFindex.json";
+            vegaEmbed('#chart102', myChart102);
+          </script>
+    </div>
+
+  </container>
+
+  <p class="text">Covid has lead to the US further dominating the global stock market and propping up the returns for the globe. So while diversification is key in the stock market, as Buffet says “don’t bet against America”
+  </p>
+    <p class="space_provider">.</p>
+
+  <p class="header">Which sectors of the stock market fell the most and how did they recover </p> 
+
+  <container class="container">
+
+    <!---->
+      <div class="chartlong" id="chart104" tabindex="104">
+          <script>
+            var myChart104 = "charts/market_sectors.json";
+            vegaEmbed('#chart104', myChart104);
+          </script>
+    </div>
+
+    <div class="chart" id="chart105" tabindex="105">
+      <script>
+        var myChart105 = "charts/sector_lowest.json";
+        vegaEmbed('#chart105', myChart105);
+      </script>
+    </div>
+
+    <div class="chart" id="chart106" tabindex="106">
+      <script>
+        var myChart106 = "charts/sector_end.json";
+        vegaEmbed('#chart106', myChart106);
+      </script>
+    </div>
+
+  </container>
+
+  <p class="text">Nearly every sector has seen significant growth since January despite the crash with IT steaming ahead on growth, linking in with US dominance as the VTI is weighted 5.8% more in tech than the VT.
+  </p>
+    <p class="space_provider">.</p>
+
+  <p class="header">Regression on total COVID cases and the US stock market </p> 
+
+  <container class="container">
+
+    <!---->
+      <div class="chartlong" id="chart107" tabindex="107">
+          <script>
+            var myChart107 = "charts/Regression_VTI_total.json";
+            vegaEmbed('#chart107', myChart107);
+          </script>
+    </div>
+
+    <div class="chart" id="chart108" tabindex="108">
+      <script>
+        var myChart108 = "charts/Regression_VTI_inital.json";
+        vegaEmbed('#chart108', myChart108);
+      </script>
+    </div>
+
+    <div class="chart" id="chart109" tabindex="109">
+      <script>
+        var myChart109 = "charts/Regression_VTI_omicron.json";
+        vegaEmbed('#chart109', myChart109);
+      </script>
+    </div>
+
+  </container>
+
+  <p class="text">Despite the significant correlation during the last 2 years, it is interesting to see that the omicron lead covid spike did seem to flatten the stock market out. However after nearly 1.5 years of growth it is expected for a lose of momentum and how much this is due to covid and not other major factors such as US tapering leads to some major flaws in this conclusion. The stock market is always impacted by so many things and it seems that covid was not a major catalyst for a long time.
+  </p>
+    <p class="space_provider">.</p>
+
+  <p class="header">Data Sources</p>
+    <p class="text">
+
+    Yahoo finance data was obtained from using a python loop in order to mass download the data for numerous stock tickers. It was a simple loop using Pandas and Yahoo finance to build up a data frame for the stock tickers I wanted (link to coding down below).
+  </p>
+    <p class="text">John Hopkins University (JHU) let me download a huge csv file with covid-19 statistics for every country and for every type of recordable data such as new cases, total deaths, double vaccinated etc. I preferred this as covid API’s were often getting updated and sometimes changing parameters or being ‘switched off’ so I preferred the permanent data I could obtain this way and the end date being 31/12/21 worked well for the end of year data. Since JHU have not yet renamed anything I’m confident they won’t start now so if I were to redo this one year later I could easily redownload the CSV with the new data and all the graphs would work.
+    </p>
+    <p class="text"> I used investing.com to download the data for MSCI sectors as I wanted it to include the 23 developed countries and since many ETF’s index themselves to the MSCI or track it, I thought why not use the index itself. This was the slowest and least replicable part of my data as the website was slow and the data took a while to download and there was no way to batch download, so I had to manually put the data al together in excel. If you were to repeat this / look at a different timeline, I would simply avoid getting data from this route and use ETF’s that track the MSCI sectors since they will show the same % change anyway. This way you can use the python code and download all the data in a fraction of the time it took me. 
+    </p>
+<p class="text" onclick="location.href='https:/colab.research.google.com/drive/1CEPakZ_XxgZhrY6N60GvMI1lAKo6nA6M?usp=sharing'">Click for Python Code</p>
+
+<p class="header">Data Cleaning and Analysis</p>
+
+<p class="text">In order to ‘clean’ my data I used a simple excel formula to match up the dates. Stock market data is reported Monday-Friday whereas covid data is done every day. Since I wanted to join the two datasets together to help with reducing the amount of layers needed in vega but I couldn’t simply copy them next to each other was the dates wouldn’t line up. I set the covid dates up in column A the stock market dates in column C and the stock price in column D. Then by using ‘=INDEX($D$2:$D$492,MATCH(A2,$C$2:$C$492,0))' in column B the dates all matched.
+</p>
+  <p class="text"> Graphs 4 and 5 are code intensive as I wanted to create a facet layout with price and varying covid stats. Facet’s wont enable layering the data set in this way so instead I had to use hconcat and add multiple layers in after that. This meant I had to double up on tooltips coding to make the tooltip work on both lines and manually enter in height and width for each graph. Due to vega-lites limitations this meant no width=container and as such these graphs don’t transfer well onto phone.
+  </p>
+    <p class="text">Analysis was easy to do in vega with using the transform function a lot for condensing values into their millions, timeparsing the date and then filtering for my chosen range and using the calculate function to index the data to a chosen date. This means the graphs can be easily replicated with new data and very little coding changes.
+  </p>
+
+</div>
+
+
+
+</body>
+
+</html>

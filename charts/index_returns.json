@@ -1,0 +1,49 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "Major stock market index returns",
+    "title": {
+  
+      "text": "Stock market returns on a 5 year horizon ",
+  
+      "subtitle": "Return percentages are from a leading index in that country",
+  
+      "subtitleFontStyle":"italic",
+  
+      "subtitleFontSize":10,
+  
+      "anchor": "start",
+  
+      "color": "black"
+   },
+  
+    "data": {"url": "https://raw.githubusercontent.com/JordanWData/JordanWData.github.io/main/index-returns.csv"},
+  
+    "mark":{
+      "type": "rule",
+      "strokeWidth":20,
+      "opacity":1
+      },
+    
+    "height": 300,
+    "width": "container",
+  
+    "encoding": {
+      "x": 
+      {"field": "Country",
+       "type": "ordinal", 
+       "sort":[], 
+       "title": null},
+  
+  "color": {
+        "field": "Index"
+  },
+  
+  "y": 
+  {"field": "5 Year",
+  "type": "quantitative",
+   "title": null, 
+   "scale": {"domain": [0, 120]}}
+    }
+  
+  }
+  

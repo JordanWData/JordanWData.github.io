@@ -1,0 +1,83 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "% Change in quarterly Private Consumption Expenditure in Sweden and Denmark",
+    "subtitle": "Data from FRED, Sweden=Blue, Denmark=Red",
+    "subtitleFontStyle": "italic",
+    "subtitleFontSize": 10,
+    "anchor": "start",
+    "color": "black",
+    "subtitleColor": "black"
+  },
+  "config": {"background": "#FFFFFF", "view": {"stroke": "transparent"}},
+  "width": "container",
+  "height": 300,
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/JordanWData/JordanWData.github.io/main/SWE_consumption.csv",
+        "format": {"type": "csv"}
+      },
+      "mark": {
+        "type": "line",
+        "point": false,
+        "interpolate": "linear",
+        "color": "#0130ca"
+      },
+      "encoding": {
+        "x": {
+          "field": "DATE",
+          "type": "temporal",
+          "axis": {
+            "title": null,
+            "grid": false,
+            "ticks": false
+          }
+        },
+        "y": {
+          "field": "Percentage",
+          "type": "quantitative",
+          "title": "",
+          "axis": {"grid": false}
+        },
+        "tooltip": [
+      {"field": "DATE", "title": "Date", "type": "temporal"},
+      {"field": "Percentage", "title": "% Change from previous quarter"}
+    ]
+      }
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/JordanWData/JordanWData.github.io/main/DEN_consumption.csv",
+        "format": {"type": "csv"}
+      },
+      "mark": {
+        "type": "line",
+        "point": false,
+        "interpolate": "linear",
+        "color": "#ff0000"
+      },
+      "encoding": {
+        "x": {
+          "field": "DATE",
+          "type": "temporal",
+          "axis": {
+            "title": null,
+            "grid": false,
+            "ticks": false
+          }
+        },
+        "y": {
+          "field": "Percentage",
+          "type": "quantitative",
+          "title": "",
+          "axis": {"grid": false}
+        },
+        "tooltip": [
+      {"field": "DATE", "title": "Date", "type": "temporal"},
+      {"field": "Percentage", "title": "% Change from previous quarter"}
+    ]
+      }
+    }
+  ]
+}
