@@ -203,7 +203,7 @@
 </p>
   <p class="text"> Graphs 4 and 5 are code intensive as I wanted to create a facet layout with price and varying covid stats. Facet’s wont enable layering the data set in this way so instead I had to use hconcat and add multiple layers in after that. This meant I had to double up on tooltips coding to make the tooltip work on both lines and manually enter in height and width for each graph. Due to vega-lites limitations this meant no width=container and as such these graphs don’t transfer well onto phone.
   </p>
-    <p class="text">Analysis was easy to do in vega with using the transform function a lot for condensing values into their millions, timeparsing the date and then filtering for my chosen range and using the calculate function to index the data to a chosen date. This means the graphs can be easily replicated with new data and very little coding changes.
+    <p class="text">Analysis was easy to do in vega with using the transform function a lot for condensing values into their millions, timeparsing the date and then filtering for my chosen range, using the calculate function to index the data to a chosen date and regression was done inside of the vega script. This means the graphs can be easily replicated with new data and very little coding changes.
   </p>
 
 </div>
